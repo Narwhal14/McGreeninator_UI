@@ -108,17 +108,10 @@ namespace McGreeninator_UI.Classes
         private SerialPort port = new SerialPort("COM1",
             9600, Parity.None, 8, StopBits.One);
 
-        [STAThread]
-        static void Main(string[] args)
-        {
-            // Instatiate this class
-            new SerialPortProgram();
-        }
 
         cSerialHandler()
         {
-            Console.WriteLine("Incoming Data:");
-
+            
             // Attach a method to be called when there
             // is data waiting in the port's buffer
             port.DataReceived += new SerialDataReceivedEventHandler(port_DataReceived);
@@ -232,7 +225,6 @@ namespace McGreeninator_UI.Classes
             int wl, nl, t, h;
             bool l, w, n;
             string receivedMessage = "";
-            status stat;
 
             // grab return string
 
@@ -249,7 +241,7 @@ namespace McGreeninator_UI.Classes
                 return  new status(wl, nl, t, h, l, w, n);
             }
 
-            return stat = new status();
+            return  new status();
         }
         // update pump / light
         private timeLists updateLists()
