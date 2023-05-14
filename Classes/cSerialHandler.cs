@@ -107,7 +107,7 @@ namespace McGreeninator_UI.Classes
     {
         // Create the serial port with basic settings
         private readonly SerialPort port = new SerialPort("COM1", 9600, Parity.None, 8, StopBits.One);
-
+        
         cSerialHandler()
         {
             

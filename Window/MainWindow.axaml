@@ -2,10 +2,37 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="1366" d:DesignHeight="720"
         x:Class="McGreeninator_UI.MainWindow"
-        Title="McGreeninator_UI">
+        Title="McGreeninator_UI"
+		Width="1366"
+		Height="720"
+		SizeToContent="Manual"
+		CanResize="False">
+	
+	
+	
+		<TabControl HorizontalAlignment="Stretch" Padding="0" Margin="0">
 
-        <Button Background = "lightBlue" Content = "Settings" Name = "btn_Settings" Click="btn_Settings_Click"/>
+			<TabItem Height="120"  Width="455" Header="Home"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="LightCoral" >
+				<Grid Background="LightCoral" Width="1366">
+					
+					
+				</Grid>
+			</TabItem>
+			<TabItem  Height="120" Width="455" Header="Settings" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="LightBlue">
+				<Grid Background="LightBlue" Width="1366">
 
+					
+				</Grid>
+			</TabItem>
+			<TabItem  Height="120"  Width="455" Header="Debug" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="LightGreen">
+				<Grid Background="LightGreen" Width="1366">
+					
+					
+				</Grid>
+			</TabItem>
+
+
+		</TabControl>
 </Window>
