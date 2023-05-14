@@ -9,37 +9,40 @@ using System.Threading.Tasks;
 
 namespace McGreeninator_UI.Classes
 {
-    public enum commands
+    public static class commands
     {
         // the water pump. defined as time to turn on and amount to disperse.
         // can be set in a continuous mode where water will be added slowly as a mL / day value
-        PAdd,// add Pump
-        PRem, // remove Pump
-        PRes, // reset Pump
-        PAddMult, // sends List of pump
-        PMode,
+        static readonly string PAdd = "AP";// add Pump
+        static readonly string PRem = "RP"; // remove Pump
+        static readonly string PRes = "XP"; // reset Pump
+        static readonly string PAddMult = "NP"; // sends List of pump
+        static readonly string PMode = "MP";
 
         // Grow Light defined as a times the light will turn on 
-        LAdd,// add Light 
-        LRem, // remove Light
-        LRes, // reset Light
-        LAddMult, // sends List of Light
+        static readonly string LAdd = "AL";// add Light 
+        static readonly string LRem = "RL"; // remove Light
+        static readonly string LRes = "XL"; // reset Light
+        static readonly string LAddMult = "NL"; // sends List of Light
 
         // temperature of the system
-        TSet,   // set temperature range - sets temperature range
-        TRes, // reset temperature range - resets to default temp
+        static readonly string TSet = "ST";  // set temperature range - sets temperature range
+        static readonly string TRes = "RT"; // reset temperature range - resets to default temp
 
         // Relative Humidity of the sytem
-        HSet, // set humidity
-        HRes, // reset humidity
+        static readonly string HSet = "SH"; // set humidity
+        static readonly string HRes = "RH"; // reset humidity
 
         // Nutrition in the system - defined as mL / L of water
-        NSet, // set nutrition
-        NRes, // reset nutrition
+        static readonly string NSet = "SN";// set nutrition
+        static readonly string NRes = "RN";// reset nutrition
 
         // Status Returns the current state of the machine, this will be a string of data containing current
         // temperature, humidity, and active devices 
-        SGet // get status
+        static readonly string SGet = "GS"; // get status
+
+        // get pumps
+        static readonly string PGet = "GP";
     }
 
     public enum pumpMode
@@ -102,12 +105,8 @@ namespace McGreeninator_UI.Classes
 
     internal class cSerialHandler
     {
-
-        
         // Create the serial port with basic settings
-        private SerialPort port = new SerialPort("COM1",
-            9600, Parity.None, 8, StopBits.One);
-
+        private readonly SerialPort port = new SerialPort("COM1", 9600, Parity.None, 8, StopBits.One);
 
         cSerialHandler()
         {
@@ -118,15 +117,12 @@ namespace McGreeninator_UI.Classes
 
             // Begin communications
             port.Open();
-
         }
 
         private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             parseCommand(port.ReadExisting());
         }
-
-        
 
         private int parseCommand(string command)
         {
@@ -135,6 +131,7 @@ namespace McGreeninator_UI.Classes
 
         private int sendCommand(string command)
         {
+            port.WriteLine(command);
             return 0;
         }
 
@@ -144,8 +141,24 @@ namespace McGreeninator_UI.Classes
         }
 
         // Pump
-        private int addPump(int start, int stop)
+        private int addPump(timeRange pumpRange = new timeRange(), int amount = 0)
         {
+            /* dummy code untill global pumpmode is added */ pumpMode currentPumpMode = pumpMode.Continuous;
+
+            if (currentPumpMode == pumpMode.Continuous)
+            {
+
+            }
+            else if (currentPumpMode == pumpMode.Timed)
+            {
+
+            }
+            else if (currentPumpMode == pumpMode.Frequency)
+            {
+
+            }
+            
+            
             return 0;
         }
 
@@ -164,14 +177,14 @@ namespace McGreeninator_UI.Classes
             return 0;
         }
 
-        private int pumpMode(pumpMode mode)
+        private int setPumpMode(pumpMode mode)
         {
             return 0;
         }
 
         // Light
 
-        private int addLight(int start, int stop)
+        private int addLight(timeRange lightRange)
         {
             return 0;
         }
@@ -238,7 +251,7 @@ namespace McGreeninator_UI.Classes
                 w = bool.Parse(parsedMessage[5]);
                 n = bool.Parse(parsedMessage[6]);
 
-                return  new status(wl, nl, t, h, l, w, n);
+                return new status(wl, nl, t, h, l, w, n);
             }
 
             return  new status();
