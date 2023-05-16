@@ -12,22 +12,608 @@
 	
 	
 	
-		<TabControl HorizontalAlignment="Stretch" Padding="0" Margin="0">
+		<TabControl 
+			HorizontalAlignment="Stretch" 
+			Padding="0" 
+			Margin="0">
 
-			<TabItem Height="120"  Width="455" Header="Home"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="LightCoral" >
-				<Grid Background="LightCoral" Width="1366">
-					
-					
+			<TabItem 
+				Height="120"  
+				Width="455" 
+				Header="Home"  
+				HorizontalAlignment="Stretch" 
+				VerticalAlignment="Stretch" 
+				Background="LightCoral" >
+				<Grid
+					Background="LightCoral"
+					Width="1366">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*"></RowDefinition>
+						<RowDefinition Height="*"></RowDefinition>
+						<RowDefinition Height="*"></RowDefinition>
+						<RowDefinition Height="*"></RowDefinition>
+						<RowDefinition Height="*"></RowDefinition>
+					</Grid.RowDefinitions>
+					<!--Gauges-->
+					<Canvas
+						Grid.Column ="0"
+						Grid.Row="0"
+						Name="drw_Temperature"
+						Margin="20"
+						>
+
+						<Ellipse Fill="LightGreen" Height="250" Width="250"/>
+						<Arc
+							Height="250"
+							Width="250"
+							StrokeThickness="50"
+							Stroke="Yellow"
+							StartAngle="270"
+							SweepAngle="250"				
+							/>
+						<Ellipse Fill="Blue" Height="150" Width="150" Canvas.Left ="48" Canvas.Top="48"/>
+						<Label Name="lbl_Temp" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Content="05.42" Canvas.Left="65" Canvas.Top="95" FontSize="40" Foreground="White" ></Label>
+						<Label Content="TEMP"  HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="50" Canvas.Top="250" FontSize="50" FontStyle="Oblique" Foreground="White" />
+					</Canvas>
+					<Canvas
+						Grid.Column="1"
+						Grid.Row="0"
+						Name="drw_Humidity"
+						Margin="20"
+						>
+						<Ellipse Fill="LightGreen" Height="250" Width="250"/>
+						<Arc
+							Height="250"
+							Width="250"
+							StrokeThickness="50"
+							Stroke="Yellow"
+							StartAngle="270"
+							SweepAngle="100"
+							/>
+						<Ellipse Fill="Blue" Height="150" Width="150" Canvas.Left ="48" Canvas.Top="48"/>
+						<Label Name="lbl_Humid" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Content="05.42" Canvas.Left="65" Canvas.Top="95" FontSize="40" Foreground="White" ></Label>
+						<Label Content="HUMIDITY"  HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="0" Canvas.Top="250" FontSize="50" FontStyle="Oblique" Foreground="White" />
+
+					</Canvas>
+
+					<Canvas
+						Grid.Column="2"
+						Grid.Row="0"
+						Name="drw_PH"
+					Margin="20"
+						>
+						
+						<Ellipse Fill="LightGreen" Height="250" Width="250"/>
+						<Arc
+							Height="250"
+							Width="250"
+							StrokeThickness="50"
+							Stroke="Yellow"
+							StartAngle="270"
+							SweepAngle="200"				
+							/>
+						<Ellipse Fill="Blue" Height="150" Width="150" Canvas.Left ="48" Canvas.Top="48"/>
+						<Label Name="lbl_PH" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Content="05.42" Canvas.Left="65" Canvas.Top="95" FontSize="40" Foreground="White" ></Label>
+						<Label Content="PH"  HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="90" Canvas.Top="250" FontSize="50" FontStyle="Oblique" Foreground="White" />
+
+						
+					</Canvas>
+<Label 
+	Grid.Column="3"
+	Grid.Row="0"
+	Content ="Phosphorus"
+	FontSize ="30"
+	Foreground="white"
+	FontStyle="Oblique"
+	Margin="10"
+	HorizontalAlignment="Center"
+	VerticalAlignment="Center"
+	
+	/>
+					<Label
+	Grid.Column="3"
+	Grid.Row="1"
+	Content ="Potassium"
+	FontSize ="30"
+	Foreground="white"
+	FontStyle="Oblique"
+	Margin="10"
+	
+	HorizontalAlignment="Center"
+	VerticalAlignment="Center"
+	
+	/>
+					<Label
+	Grid.Column="3"
+	Grid.Row="2"
+	Content ="Nitrogen"
+	FontSize ="30"
+	Foreground="white"
+	FontStyle="Oblique"
+Margin="10"
+HorizontalAlignment="Center"
+VerticalAlignment="Center"
+	
+	/>
+					<TextBox Name="txt_Phosphor" Grid.Column ="4" Grid.Row="0" Margin="10"/>
+					<TextBox Name="txt_Potassium" Grid.Column ="4" Grid.Row="1" Margin="10"/>
+					<TextBox Name="txt_Nitrogen" Grid.Column ="4" Grid.Row="2" Margin="10"/>
+					<Button Name="btn_TogLight" Content="Toggle Light" 
+							VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+							VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  
+							Grid.Column="0"  Grid.ColumnSpan ="2" Grid.Row="3" Margin="10" 
+							FontSize="40" Foreground="White" Background="Gray"   FontStyle="Oblique" />
+					<Button Name="btn_Water" Content="Water"
+							VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+							VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+							Grid.Column="0"  Grid.ColumnSpan ="1" Grid.Row="4" Margin="10"
+							FontSize="40" Foreground="White" Background="Gray"   FontStyle="Oblique" />
+					<NumericUpDown Name="txt_WaterAmmount"  Value="500"
+								    Increment="50" 
+							 VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+							VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+							Grid.Column="1"  Grid.Row="4" Margin="10"
+							FontSize="40" Foreground="Black" Background="LightBlue" FontStyle="Oblique" />					
 				</Grid>
 			</TabItem>
-			<TabItem  Height="120" Width="455" Header="Settings" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="LightBlue">
-				<Grid Background="LightBlue" Width="1366">
-
+			<TabItem  
+				Height="120" 
+				Width="455" 
+				Header="Settings" 
+				HorizontalAlignment="Stretch" 
+				VerticalAlignment="Stretch" 
+				Background="LightBlue">
+				<Grid 
+					Background="LightBlue" 
+					Width="1366">
 					
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="2*"></ColumnDefinition>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+
+
+						<ColumnDefinition Width="*"></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*"></RowDefinition>
+						<RowDefinition Height="*"></RowDefinition>
+						<RowDefinition Height="*"></RowDefinition>
+						<RowDefinition Height="*"></RowDefinition>
+					
+						<RowDefinition Height="*"></RowDefinition>
+					
+						<RowDefinition Height="*"></RowDefinition>
+						<RowDefinition Height="*"></RowDefinition>
+						<RowDefinition Height="*"></RowDefinition>
+						<RowDefinition Height="*"></RowDefinition>
+						
+					</Grid.RowDefinitions>
+
+					<Button
+						Grid.Column="0"
+						Grid.Row="7"
+						Grid.ColumnSpan="3"
+						Grid.RowSpan="2"
+						VerticalAlignment="Stretch"
+						HorizontalAlignment="Stretch"
+						Content="Save Settings"
+						FontSize="50"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center">
+					</Button>
+					
+					<!--Environment Settings-->
+					<Label 
+						Grid.Column="0" 
+						Grid.Row="0" 
+						Grid.ColumnSpan="3" 
+						VerticalAlignment="Center" 
+						HorizontalAlignment="Center" 
+						FontSize="40" 
+						FontWeight="Bold" 
+						Content="Environment"
+
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center">
+					</Label>
+					
+					
+					
+					
+					
+					<!--Temperature-->
+					
+					<Label 
+						Grid.Column="0" 
+						Grid.Row="1" 
+						VerticalAlignment="Center"
+						FontSize="20"
+						FontWeight="Bold"
+						Content="Temperature"
+
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center">
+					</Label>
+					<Slider
+						Grid.Column="1"
+						Grid.Row="1"
+						VerticalAlignment="Center">
+					</Slider>
+					<Label
+						 Name="lbl_Temperature"
+						 Grid.Column="2"
+						 Grid.Row="1"
+						 VerticalAlignment="Center"
+						 Content="0"
+						 FontSize="40"
+						 Padding="10"
+						 
+						 HorizontalContentAlignment="Center"
+						 VerticalContentAlignment="Center"
+					>
+					</Label>
+					<!--Humidity-->
+					
+					<Label
+						Grid.Column="0"
+						Grid.Row="2"
+						VerticalAlignment="Center"
+						FontSize="20"
+						FontWeight="Bold"
+					Content="Humidity"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center">
+					</Label>
+					<Slider 
+						Name="sld_Humidity" 
+						Grid.Column="1"
+						Grid.Row="2" 
+						VerticalAlignment="Center"
+						Maximum="100"> 
+					</Slider>
+					<Label
+						 Name="lbl_Humidity"
+						 Grid.Column="2"
+						 Grid.Row="2"
+						 VerticalAlignment="Center"		
+						Content="0"
+						 FontSize="40"
+						 Padding="10"
+					
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center">
+					</Label>
+					
+					<!--Nutrition-->
+					
+					<Slider 
+						Grid.Column="1" 
+						Grid.Row="3" 
+						VerticalAlignment="Center">
+					</Slider>
+					
+					<Label 
+						Grid.Column="0"
+						Grid.Row="3"
+						VerticalAlignment="Center"
+						FontSize="20"
+						FontWeight="Bold"
+					Content="Nutrition"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center">
+					</Label>
+					<Label
+						 Name="lbl_Nutrition"
+						 Grid.Column="2"
+						 Grid.Row="3"
+						 VerticalAlignment="Center"
+						Content="0"
+						 FontSize="40"
+						 Padding="10"
+					
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center">
+					</Label>
+					<!--Phosphorus-->
+					
+					<Label
+						Grid.Column="0"
+						Grid.Row="4"
+						VerticalAlignment="Center"
+						FontSize="20"
+						FontWeight="Bold"
+					Content="Phosphorus"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center">
+					</Label>
+					<Slider 
+						Name="sld_Phosphorus" 
+						Grid.Column="1"
+						Grid.Row="4" 
+						VerticalAlignment="Center"
+						Maximum="100"> 
+					</Slider>
+					<Label
+						 Name="lbl_Phosphorus"
+						 Grid.Column="2"
+						 Grid.Row="4"
+						 VerticalAlignment="Center"		
+						Content="0"
+						 FontSize="40"
+						 Padding="10"
+					
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center">
+					</Label>
+<!--Potassium-->
+					
+					<Label
+						Grid.Column="0"
+						Grid.Row="5"
+						VerticalAlignment="Center"
+						FontSize="20"
+						FontWeight="Bold"
+					Content="Potassium"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center">
+					</Label>
+					<Slider 
+						Name="sld_Potassium" 
+						Grid.Column="1"
+						Grid.Row="5" 
+						VerticalAlignment="Center"
+						Maximum="100"> 
+					</Slider>
+					<Label
+						 Name="lbl_Potassium"
+						 Grid.Column="2"
+						 Grid.Row="5"
+						 VerticalAlignment="Center"		
+						Content="0"
+						 FontSize="40"
+						 Padding="10"
+					
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center">
+					</Label>
+<!--Nitrogen-->
+					
+					<Label
+						Grid.Column="0"
+						Grid.Row="6"
+						VerticalAlignment="Center"
+						FontSize="20"
+						FontWeight="Bold"
+					Content="Nitrogen"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center">
+					</Label>
+					<Slider 
+						Name="sld_Nitrogen" 
+						Grid.Column="1"
+						Grid.Row="6" 
+						VerticalAlignment="Center"
+						Maximum="100"> 
+					</Slider>
+					<Label
+						 Name="lbl_Nitrogen"
+						 Grid.Column="2"
+						 Grid.Row="6"
+						 VerticalAlignment="Center"		
+						Content="0"
+						 FontSize="40"
+						 Padding="10"
+					
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center">
+					</Label>
+
+					<!--ListBox Pump-->
+
+					<Label
+						Content="Pump"
+						Grid.Column="4"
+						Grid.Row ="0"
+						Grid.ColumnSpan="2"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						FontSize="40"
+						FontWeight="Bold"
+
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						
+						Margin="4"
+						>
+					</Label>
+					<ListBox
+						Grid.Column="4"
+						Grid.Row ="1"
+						Grid.RowSpan="5"
+						Grid.ColumnSpan="2"
+						
+						Margin="4"
+						
+					></ListBox>
+					<Button
+						Grid.Column = "4"
+						Grid.Row="9"
+						Content="Add Time"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						
+						VerticalAlignment="Stretch"
+						HorizontalAlignment="Stretch"
+						
+						Margin="4"
+						>
+					</Button>
+					<Button
+						Grid.Column = "5"
+						Grid.Row="9"
+						Content="Delete Time"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						VerticalAlignment="Stretch"
+						HorizontalAlignment="Stretch"
+						
+						Margin="4"
+						>
+					</Button>
+				
+					
+					<TextBox
+						Grid.Column = "5"
+						Grid.Row="7"
+						
+						Margin="4"
+						>
+					</TextBox>
+					<TextBox
+						Grid.Column = "4"
+						Grid.Row="7"
+						
+						Margin="4"
+						>
+						
+					</TextBox>
+					<Label
+						Grid.Column = "4"
+						Grid.Row="6"
+						Content="Start"
+						FontSize="30"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						
+						Margin="4"
+				></Label>
+					<Label
+						Grid.Column = "5"
+						Grid.Row="6"
+					Content="Ammount"
+					FontSize="30"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+						Margin="4"
+				></Label>
+					
+					<!--ListBox Light-->
+
+					<Label
+						Content="Light"
+						Grid.Column="6"
+						Grid.Row ="0"
+						Grid.ColumnSpan="2"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						FontSize="40"
+						FontWeight="Bold"
+
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						
+						Margin="4"
+						>
+					</Label>
+					<ListBox
+						Grid.Column="6"
+						Grid.Row ="1"
+						Grid.RowSpan="5"
+						Grid.ColumnSpan="2"
+						Margin="4"
+						
+					></ListBox>
+					<Button
+						Grid.Column = "6"
+						Grid.Row="9"
+						Content="Add Time"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						
+						VerticalAlignment="Stretch"
+						HorizontalAlignment="Stretch"
+						
+						Margin="4"
+						>
+					</Button>
+					<Button
+						Grid.Column = "7"
+						Grid.Row="9"
+						Content="Delete Time"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						VerticalAlignment="Stretch"
+						HorizontalAlignment="Stretch"
+						
+						Margin="4"
+						>
+					</Button>
+
+
+					<TextBox
+						Grid.Column = "7"
+						Grid.Row="7"
+						
+						Margin="4"
+						>
+					</TextBox>
+					<TextBox
+						Grid.Column = "6"
+						Grid.Row="7"
+						
+						Margin="4"
+						>
+
+					</TextBox>
+					<Label
+						Grid.Column = "6"
+						Grid.Row="6"
+						Content="Start"
+						FontSize="30"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						
+						Margin="4"
+				></Label>
+					<Label
+						Grid.Column = "7"
+						Grid.Row="6"
+						
+						Margin="4"
+						
+					Content="End"
+					FontSize="30"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+				></Label>
 				</Grid>
 			</TabItem>
-			<TabItem  Height="120"  Width="455" Header="Debug" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="LightGreen">
-				<Grid Background="LightGreen" Width="1366">
+			<TabItem  
+				Height="120"  
+				Width="455" 
+				Header="Debug"
+				HorizontalAlignment="Stretch" 
+				VerticalAlignment="Stretch" 
+				Background="LightGreen">
+				<Grid 
+					Background="LightGreen"
+					Width="1366">
+
+
+					
 					
 					
 				</Grid>
