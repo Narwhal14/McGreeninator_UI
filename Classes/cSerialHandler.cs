@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO.Ports;
 using System.Linq;
+using System.Reactive.Disposables;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -86,19 +87,17 @@ namespace McGreeninator_UI.Classes
     public struct status
     {
         public int waterLevel;
-        public int nutritionLevel;
-        public int temperature;
-        public int humidity;
+        public bool potOn;
+        public bool nitOn;
+        public bool phosOn;
         public bool lightOn;
         public bool WpumpOn;
-        public bool NpumpOn;
 
-        public status(int wl, int nl, int t, int h, bool l, bool w, bool n)
+        public status(int wl, bool p, bool n, bool k, bool l, bool w)
         {
             waterLevel = wl;
-            nutritionLevel = nl;
-            temperature = t; humidity = h;
-            lightOn = l; WpumpOn = w; NpumpOn = n;
+            potOn = k, nitOn = n; phosOn = p; 
+            lightOn = l; WpumpOn = w; 
         }
 
     }
@@ -232,26 +231,32 @@ namespace McGreeninator_UI.Classes
             return 0;
         }
 
+        // sensor
+        private ResourceValues getSensorData()
+        {
+
+        }
+
         // status
         private status getStatus()
         {
             int wl, nl, t, h;
-            bool l, w, n;
+            bool p, n, k, l, w;
             string receivedMessage = "";
 
             // grab return string
 
             string[] parsedMessage = receivedMessage.Split("|");
-            if (parsedMessage.Length == 7) {
+            if (parsedMessage.Length == 6) {
                 wl = int.Parse(parsedMessage[0]);
-                nl = int.Parse(parsedMessage[1]);
-                t = int.Parse(parsedMessage[2]);
-                h = int.Parse(parsedMessage[3]);
+                p = bool.Parse(parsedMessage[1]);
+                n = bool.Parse(parsedMessage[2]);
+                k = bool.Parse(parsedMessage[3]);
                 l = bool.Parse(parsedMessage[4]);
                 w = bool.Parse(parsedMessage[5]);
-                n = bool.Parse(parsedMessage[6]);
+               
 
-                return new status(wl, nl, t, h, l, w, n);
+                return new status(wl, p, n, k, l, w);
             }
 
             return  new status();

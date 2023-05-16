@@ -611,11 +611,71 @@ VerticalAlignment="Center"
 				<Grid 
 					Background="LightGreen"
 					Width="1366">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="*"></ColumnDefinition>
 
 
-					
-					
-					
+						<ColumnDefinition Width="*"></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*"></RowDefinition>
+						<RowDefinition Height="*"></RowDefinition>
+						<RowDefinition Height="*"></RowDefinition>
+						<RowDefinition Height="*"></RowDefinition>
+
+						<RowDefinition Height="*"></RowDefinition>
+
+						<RowDefinition Height="*"></RowDefinition>
+						<RowDefinition Height="*"></RowDefinition>
+						<RowDefinition Height="*"></RowDefinition>
+						<RowDefinition Height="*"></RowDefinition>
+
+					</Grid.RowDefinitions>
+
+					<ListBox Name="lst_Console" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="7"
+							 VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 	 />
+					<Label Grid.Column="0" Grid.Row="0" Content="Console" Grid.ColumnSpan="3" FontSize="50" FontWeight="15"
+						   VerticalAlignment="Center" HorizontalAlignment="Center" 
+						   VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+					<Label Grid.Column="3" Grid.Row="0" Content="DEBUG" Grid.ColumnSpan="1" FontSize="45" FontWeight="15"
+						   VerticalAlignment="Center" HorizontalAlignment="Center"
+						   VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+					<RadioButton Name ="rb_Water" Content="WATER" Grid.Column="3" Grid.Row="1" 
+							 VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10"
+								 FontSize="20" FontWeight="3" />
+					<RadioButton Name ="rb_Phosphorus" Content="PHOSPHOR" Grid.Column="3" Grid.Row="2"
+							 VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10"
+								 FontSize="20" FontWeight="3" />
+					<RadioButton Name ="rb_Potassium" Content="POTASSIUM" Grid.Column="3" Grid.Row="3"
+							 VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10"
+								 FontSize="20" FontWeight="3" />
+					<RadioButton Name ="rb_Nitrogen" Content="NITROGEN" Grid.Column="3" Grid.Row="4"
+							 VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10"
+								 FontSize="20" FontWeight="3" />
+					<RadioButton Name ="rb_PHup" Content="PH UP" Grid.Column="3" Grid.Row="5"
+							 VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10"
+								 FontSize="20" FontWeight="3" />
+					<RadioButton Name ="rb_PHdown" Content="PH DOWN" Grid.Column="3" Grid.Row="6"
+							 VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10"
+								 FontSize="20" FontWeight="3" />
+					<RadioButton Name ="rb_Light" Content="LIGHT" Grid.Column="3" Grid.Row="7"
+							 VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10"
+								 FontSize="20" FontWeight="3" />
+					<RadioButton Name ="rb_Serial" Content="SERIAL" Grid.Column="3" Grid.Row="8"
+							 VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10"
+								 FontSize="20" FontWeight="3" />
+
+					<Button Name ="btn_Update" Content="UPDATE" Grid.Column="0" Grid.Row="8"
+							Grid.ColumnSpan="1" Grid.RowSpan="1"
+							 VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10"
+								 FontSize="20" FontWeight="3"  Grid.VerticalContentAlignment="Center" Grid.HorizontalContentAlignment="Center" /> 
 				</Grid>
 			</TabItem>
 
