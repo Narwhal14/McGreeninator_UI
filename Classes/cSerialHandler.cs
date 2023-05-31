@@ -53,36 +53,13 @@ namespace McGreeninator_UI.Classes
         Frequency
     }
 
-    public struct timeRange
+    public struct Command
     {
-        public int Start;
-        public int End;
-
-        public timeRange(int s, int e)
-        {
-            Start = s;
-            End = e;
-        }
-        public timeRange(string commandArray)
-        {
-            string[] splitCommand = commandArray.Split(",");
-            Start = int.Parse(splitCommand[0]);
-            End = int.Parse(splitCommand[1]);
-        }
+        public string message;
+        public string command;
+        public string[] valueArr;
     }
 
-    public struct timeLists
-    {
-        public List<timeRange> pumpList;
-        public List<timeRange> lightList;
-
-        public timeLists(List<timeRange> pump, List<timeRange> light)
-        {
-            pumpList = pump;
-            lightList = light;
-        }
-        
-    }
 
     public struct status
     {
@@ -96,18 +73,21 @@ namespace McGreeninator_UI.Classes
         public status(int wl, bool p, bool n, bool k, bool l, bool w)
         {
             waterLevel = wl;
-            potOn = k, nitOn = n; phosOn = p; 
+            potOn = k; nitOn = n; phosOn = p; 
             lightOn = l; WpumpOn = w; 
         }
 
     }
 
-    internal class cSerialHandler
+
+    public class cSerialHandler
     {
         // Create the serial port with basic settings
         private readonly SerialPort port = new SerialPort("COM1", 9600, Parity.None, 8, StopBits.One);
-        
-        cSerialHandler()
+        private List<Command> commandSendBuffer = new List<Command>();
+        private List<Command> commandReceiveBuffer = new List<Command>();
+
+        public cSerialHandler()
         {
             
             // Attach a method to be called when there
@@ -130,7 +110,15 @@ namespace McGreeninator_UI.Classes
 
         private int sendCommand(string command)
         {
+           
             port.WriteLine(command);
+            return 0;
+        }
+
+        private int queueCommand(Command command)
+        {
+            commandSendBuffer.Add(command);
+
             return 0;
         }
 
@@ -234,6 +222,9 @@ namespace McGreeninator_UI.Classes
         // sensor
         private ResourceValues getSensorData()
         {
+            ResourceValues val = new ResourceValues();
+
+            return val;
 
         }
 

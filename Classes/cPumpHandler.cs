@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace McGreeninator_UI.Classes
 {
-    internal class cPumpHandler
+    public class cPumpHandler
     {
     }
 }
